@@ -39,10 +39,11 @@ class DevByteViewModel(application: Application) : AndroidViewModel(application)
 
     private val videosRepository = VideosRepository(database)
 
+    val playlist = videosRepository.videos
+
     init {
         viewModelScope.launch {
             videosRepository.refreshVideos()
-            val playlist = videosRepository.videos
         }
     }
 
